@@ -30,3 +30,22 @@ const bot4: robot2 = {
 
 console.log(bot1, bot2, bot3, bot4);
 // console.log(bot4.id = 5)
+
+
+class Pessoa implements robot2 {
+    id: string | number;
+    name: string;
+
+    constructor(id: string | number, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+    sayHello(): string {
+        return `Olá, meu nome é ${this.name}`;
+    }
+
+}
+
+const p = new Pessoa(5, 'John');
+console.log(p.sayHello());
