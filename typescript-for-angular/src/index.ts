@@ -1,14 +1,31 @@
+// Decorator attibute
+function minLength(length: number){
+   return (target: any, key: string) => {
+        let _value = target[key];
 
-// Decorators
+        const getter = () => '[play] ' + _value;
+        const setter = (value: string) => {
+            if(value.length < length){
+                throw new Error(`Tamanho menor do que ${length}`);
+            } else {
+                _value = value;
+            }
+    };
 
-function apiVersion(version: string) {
-    return (target: any) => {
-        Object.assign(target.prototype, { __version: version });
+    Object.defineProperty(target, key, {
+        get: getter,
+        set: setter
+    });
     }
 }
 
-@apiVersion('1.0.0')
-class Api{}
+class Api2 {
+    @minLength(3)
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+}
 
-const api = new Api();
-console.log(api.__version); // 1.0.0
+const api2 = new Api2('Teste');
+console.log(api2.name); // Teste
