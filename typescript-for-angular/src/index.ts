@@ -1,11 +1,14 @@
+
 // Decorators
 
-function exbirNome(target: any) {
-    console.log(target);
+function apiVersion(version: string) {
+    return (target: any) => {
+        Object.assign(target.prototype, { __version: version });
+    }
 }
 
-@exbirNome
-class Funcionario {}
+@apiVersion('1.0.0')
+class Api{}
 
-@exbirNome
-class Padeiro{}
+const api = new Api();
+console.log(api.__version); // 1.0.0
