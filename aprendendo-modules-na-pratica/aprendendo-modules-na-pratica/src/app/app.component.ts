@@ -6,13 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'diretivas-project';
-  isAliveCard: boolean = true;
-  item: string = '';
-  lista: string [] = [];
-
-  adicionarNaLista (){
-    this.lista.push(this.item);
-    this.item = '';
-  }
+  title = 'aprendendo-modules-na-pratica';
 }

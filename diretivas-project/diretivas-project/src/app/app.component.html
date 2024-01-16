@@ -2,4 +2,12 @@
 <ng-template #anotherBlock>
   <p>Olá sou um bloco secreto</p>
 </ng-template>
+<hr>
+<h1>Lista de compras</h1>
+<p>Adicione um item na lista</p>
+<input type="text" [(ngModel)]="item">
+<ul>
+  <li *ngFor="let item of lista">{{item}}</li>
+</ul>
+<button (click)="adicionarNaLista()" id="btnAdd">Adicionar</button>
 <router-outlet></router-outlet>
