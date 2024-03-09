@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
 
+  name: string = 'CHARIZARD';
+  attibutesTypes: string[] = ['FIRE', 'ROCK'];
+
 }
