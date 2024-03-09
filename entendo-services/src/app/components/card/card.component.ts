@@ -11,14 +11,16 @@ export class CardComponent implements OnInit {
 
   pokemon?: PokemonData;
 
-  attibutesTypes: string[] = ['FIRE', 'ROCK'];
-
   constructor(
     private pokemonService: PokemonService
   ) {}
 
   ngOnInit(): void {
-    this.pokemonService.getPokemon('charizard').subscribe({
+    this.getPokemon('pikachu');
+  }
+
+  getPokemon(searchName: string) {
+    this.pokemonService.getPokemon(searchName).subscribe({
       next: (res) => {
         this.pokemon = {
           id:res.id,
@@ -26,11 +28,10 @@ export class CardComponent implements OnInit {
           sprites: res.sprites,
           types: res.types
         }
-        console.log(res);
-        console.log(this.pokemon);
       },
-      error: (err) => console.log(err)
+      error: (err) => console.log('Not Found, 404')
     });
+
   }
 
 }
